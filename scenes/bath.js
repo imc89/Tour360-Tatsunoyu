@@ -2,7 +2,7 @@ export default function bath(hotspot) {
     return {
         title: "TATSUNOYU BATH - INTERIOR",
         type: "equirectangular",
-        panorama: "../low_img/1C.jpg",
+        panorama: "low_img/1C.jpg",
         hotSpots: [
             {
                 pitch: -11,

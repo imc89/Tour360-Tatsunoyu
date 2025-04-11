@@ -2,7 +2,7 @@ export default function garage(hotspot) {
     return {
        "title": "GARAJE",
         "type": "equirectangular",
-        "panorama": "../low_img/2A.jpg",
+        "panorama": "low_img/2A.jpg",
         "hotSpots": [
             {
                 "pitch": -15,

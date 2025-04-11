@@ -2,7 +2,7 @@ export default function bath_path(hotspot) {
     return {
         title: "BAÑO - CAMINO",
         type: "equirectangular",
-        panorama: "../low_img/3A.jpg",
+        panorama: "low_img/3A.jpg",
         hotSpots: [
             {
                 pitch: -13,

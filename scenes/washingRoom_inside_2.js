@@ -2,7 +2,7 @@ export default function washing_inside_2(hotspot) {
     return {
         title: "HABITACIÓN LAVADO - INTERIOR",
         type: "equirectangular",
-        panorama: "../low_img/4B.jpg",
+        panorama: "low_img/4B.jpg",
         hotSpots: [
             {
                 pitch: -26,

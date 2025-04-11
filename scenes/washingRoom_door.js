@@ -2,7 +2,7 @@ export default function washing_door(hotspot) {
     return {
         title: "HABITACIÓN LAVADO - PUERTA ",
         type: "equirectangular",
-        panorama: "../low_img/2B.jpg",
+        panorama: "low_img/2B.jpg",
         hotSpots: [
             {
                 pitch: -13,

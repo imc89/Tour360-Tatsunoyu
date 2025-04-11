@@ -3,7 +3,7 @@ const acceptBtn = document.getElementById('accept-instructions');
 const backgroundAudio = document.getElementById('background-audio');
 const audioToggle = document.getElementById('audio-toggle');
 
-backgroundAudio.volume = 0; // Volumen inicial al 20%
+backgroundAudio.volume = 0.9; // Volumen inicial al 20%
 
 acceptBtn.addEventListener('click', () => {
     instructionModal.style.display = 'none';

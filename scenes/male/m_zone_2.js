@@ -2,7 +2,7 @@ export default function male_bath_2(hotspot) {
     return {
         title: "BAÑO MASCULINO - TAQUILLAS",
         type: "equirectangular",
-        panorama: "../low_img/male/2.jpg",
+        panorama: "low_img/male/2.jpg",
         hotSpots: [
              {
                 pitch: -9,

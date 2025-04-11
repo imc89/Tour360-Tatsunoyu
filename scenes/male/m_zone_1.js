@@ -2,7 +2,7 @@ export default function male_bath_1(hotspot) {
     return {
         title: "BAÑO MASCULINO - ENTRADA",
         type: "equirectangular",
-        panorama: "../low_img/male/1.jpg",
+        panorama: "low_img/male/1.jpg",
         hotSpots: [
              {
                 pitch: -1,
