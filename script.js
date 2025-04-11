@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ========== CONFIGURACIÓN INICIAL DEL VISOR ==========
     const viewer = pannellum.viewer('panorama', {
         "default": {
-            "firstScene": "male_bath_1",
+            "firstScene": "initial",
             "autoLoad": true,
             "sceneFadeDuration": 1000,
             "showZoomCtrl": true,
