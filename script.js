@@ -70,6 +70,9 @@ document.addEventListener('DOMContentLoaded', function () {
             "yawSpeed": 6.0, // Velocidad horizontal (por defecto es 1)
             "pitchSpeed": 6.0, // Velocidad vertical
             "friction": 0, // Sensibilidad al arrastre (menos = más rápido)
+            //mobile
+            "showControls": false,  // Puedes deshabilitar los controles si prefieres que sea solo con el giroscopio
+            "deviceOrientation": true  // Habilita el control por movimiento
         },
         "scenes": {
             initial: initial(hotspot),
@@ -94,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function setupMinimap() {
         // Configuración inicial del estado del minimapa
         minimapContainer.classList.remove('collapsed');
-        toggleMinimapBtn.textContent = '−';        
+        toggleMinimapBtn.textContent = '−';
         toggleMinimapBtn.style.borderRadius = '50%';
     }
 
@@ -113,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (sceneId === 'washing_path' ||
             sceneId === 'washing_door' ||
             sceneId === 'washing_inside_1' ||
-            sceneId === 'washing_inside_2' ) {
+            sceneId === 'washing_inside_2') {
 
             cssDegrees = (360 + (yaw + 90)) % 360;
 
@@ -121,15 +124,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
             cssDegrees = (360 + (yaw + 75)) % 360;
 
-        } else if (sceneId === 'washing_inside_3' ) {
+        } else if (sceneId === 'washing_inside_3') {
 
             cssDegrees = (360 + (yaw + 0)) % 360;
 
-        } else if (sceneId === 'washing_inside_4' ) {
+        } else if (sceneId === 'washing_inside_4') {
 
             cssDegrees = (360 + (yaw + 270)) % 360;
 
-        } else if ( sceneId === 'male_bath_2') {
+        } else if (sceneId === 'male_bath_2') {
 
             cssDegrees = (360 + (yaw + 170)) % 360;
 
@@ -200,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function () {
             isMinimapVisible = !isMinimapVisible;
             minimapContainer.classList.toggle('collapsed', !isMinimapVisible);
             this.textContent = isMinimapVisible ? '−' : '+';
-            toggleMinimapBtn.textContent === '−'? toggleMinimapBtn.style.borderRadius = '50%' : toggleMinimapBtn.style.borderRadius = '10px' 
+            toggleMinimapBtn.textContent === '−' ? toggleMinimapBtn.style.borderRadius = '50%' : toggleMinimapBtn.style.borderRadius = '10px'
         });
     }
 
