@@ -287,9 +287,8 @@ document.addEventListener('DOMContentLoaded', function () {
             viewer.loadScene(closestHotspot.sceneId);
         }
     }
-});
 
-// MOBILE ORIENTATION GIROSCOPE
+    // MOBILE ORIENTATION GIROSCOPE
 document.getElementById('accept-instructions').addEventListener('click', () => {
     if (typeof DeviceOrientationEvent !== 'undefined' &&
         typeof DeviceOrientationEvent.requestPermission === 'function') {
@@ -310,3 +309,6 @@ document.getElementById('accept-instructions').addEventListener('click', () => {
         alert('Este dispositivo no requiere permiso para el control por movimiento.');
     }
 });
+
+});
+
