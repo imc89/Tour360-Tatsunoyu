@@ -184,6 +184,43 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         previousSceneId = currentSceneId;
+
+        // MOBILE ORIENTATION GIROSCOPE
+        document.getElementById('accept-instructions').addEventListener('click', async () => {
+            if (!viewer.isOrientationSupported()) {
+                alert('Tu dispositivo no soporta orientación.');
+                return;
+            }
+
+            // iOS permission
+            if (
+                typeof DeviceMotionEvent !== 'undefined' &&
+                typeof DeviceMotionEvent.requestPermission === 'function'
+            ) {
+                try {
+                    const response = await DeviceMotionEvent.requestPermission();
+                    if (response !== 'granted') {
+                        alert('Permiso denegado para giroscopio.');
+                        return;
+                    }
+                } catch (error) {
+                    alert('Error al solicitar permiso.');
+                    console.error(error);
+                    return;
+                }
+            }
+
+            // Activar orientación
+            viewer.startOrientation();
+
+            // Esperar un poco y comprobar si se activó
+            setTimeout(() => {
+                if (viewer.isOrientationActive()) {
+                    viewer.setPitch(viewer.getPitch()); // refresco
+                    alert('Giroscopio activado correctamente.');
+                }
+            }, 300);
+        });
     });
 
     // Control de transición visual
@@ -288,42 +325,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // MOBILE ORIENTATION GIROSCOPE
-    document.getElementById('accept-instructions').addEventListener('click', async () => {
-        if (!viewer.isOrientationSupported()) {
-            alert('Tu dispositivo no soporta orientación.');
-            return;
-        }
 
-        // iOS permission
-        if (
-            typeof DeviceMotionEvent !== 'undefined' &&
-            typeof DeviceMotionEvent.requestPermission === 'function'
-        ) {
-            try {
-                const response = await DeviceMotionEvent.requestPermission();
-                if (response !== 'granted') {
-                    alert('Permiso denegado para giroscopio.');
-                    return;
-                }
-            } catch (error) {
-                alert('Error al solicitar permiso.');
-                console.error(error);
-                return;
-            }
-        }
-
-        // Activar orientación
-        viewer.startOrientation();
-
-        // Esperar un poco y comprobar si se activó
-        setTimeout(() => {
-            if (viewer.isOrientationActive()) {
-                viewer.setPitch(viewer.getPitch()); // refresco
-                alert('Giroscopio activado correctamente.');
-            }
-        }, 300);
-    });
 
 });
 
