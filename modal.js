@@ -25,25 +25,3 @@ audioToggle.addEventListener('click', () => {
         audioToggle.textContent = '🔇';
     }
 });
-
-
-document.getElementById('accept-instructions').addEventListener('click', () => {
-    if (typeof DeviceOrientationEvent !== 'undefined' &&
-        typeof DeviceOrientationEvent.requestPermission === 'function') {
-
-        DeviceOrientationEvent.requestPermission()
-            .then(permissionState => {
-                if (permissionState === 'granted') {
-                    viewer.setPitch(viewer.getPitch()); // fuerza el refresh
-                    alert('Control por movimiento habilitado.');
-                } else {
-                    alert('Permiso denegado.');
-                }
-            })
-            .catch(error => {
-                console.error('Error al solicitar permiso:', error);
-            });
-    } else {
-        alert('Este dispositivo no requiere permiso para el control por movimiento.');
-    }
-});

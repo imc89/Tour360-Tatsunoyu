@@ -288,3 +288,25 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
+
+// MOBILE ORIENTATION GIROSCOPE
+document.getElementById('enable-motion').addEventListener('click', () => {
+    if (typeof DeviceOrientationEvent !== 'undefined' &&
+        typeof DeviceOrientationEvent.requestPermission === 'function') {
+
+        DeviceOrientationEvent.requestPermission()
+            .then(permissionState => {
+                if (permissionState === 'granted') {
+                    viewer.setPitch(viewer.getPitch()); // fuerza el refresh
+                    alert('Control por movimiento habilitado.');
+                } else {
+                    alert('Permiso denegado.');
+                }
+            })
+            .catch(error => {
+                console.error('Error al solicitar permiso:', error);
+            });
+    } else {
+        alert('Este dispositivo no requiere permiso para el control por movimiento.');
+    }
+});
