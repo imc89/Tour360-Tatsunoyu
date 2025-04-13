@@ -290,7 +290,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // MOBILE ORIENTATION GIROSCOPE
-document.getElementById('accept-instructions').addEventListener('click', () => {
+document.getElementById('').addEventListener('click', () => {
     if (typeof DeviceOrientationEvent !== 'undefined' &&
         typeof DeviceOrientationEvent.requestPermission === 'function') {
 
