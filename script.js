@@ -321,8 +321,6 @@ document.addEventListener('DOMContentLoaded', function () {
             if (viewer.isOrientationActive()) {
                 viewer.setPitch(viewer.getPitch()); // refresco
                 alert('Giroscopio activado correctamente.');
-            } else {
-                alert('No se pudo activar el giroscopio.');
             }
         }, 300);
     });
