@@ -290,13 +290,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // MOBILE ORIENTATION GIROSCOPE
     document.getElementById('accept-instructions').addEventListener('click', async () => {
-        // Verifica si la orientación está soportada
         if (!viewer.isOrientationSupported()) {
-            alert('El control por movimiento no está soportado en este dispositivo.');
+            alert('Tu dispositivo no soporta orientación.');
             return;
         }
 
-        // Para iOS: solicitar permiso si es necesario
+        // iOS permission
         if (
             typeof DeviceMotionEvent !== 'undefined' &&
             typeof DeviceMotionEvent.requestPermission === 'function'
@@ -304,28 +303,28 @@ document.addEventListener('DOMContentLoaded', function () {
             try {
                 const response = await DeviceMotionEvent.requestPermission();
                 if (response !== 'granted') {
-                    alert('Permiso denegado para usar el giroscopio.');
+                    alert('Permiso denegado para giroscopio.');
                     return;
                 }
             } catch (error) {
-                alert('Error solicitando permiso para giroscopio.');
+                alert('Error al solicitar permiso.');
                 console.error(error);
                 return;
             }
         }
 
-        // Activar control por orientación
+        // Activar orientación
         viewer.startOrientation();
 
-        // Verificar si está activo
-        if (viewer.isOrientationActive()) {
-            // Forzar refresco (a veces necesario para que funcione)
-            viewer.setPitch(viewer.getPitch());
-
-            alert('Control por movimiento activado.');
-        } else {
-            alert('No se pudo activar el control por movimiento.');
-        }
+        // Esperar un poco y comprobar si se activó
+        setTimeout(() => {
+            if (viewer.isOrientationActive()) {
+                viewer.setPitch(viewer.getPitch()); // refresco
+                alert('Giroscopio activado correctamente.');
+            } else {
+                alert('No se pudo activar el giroscopio.');
+            }
+        }, 300);
     });
 
 });
