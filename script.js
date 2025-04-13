@@ -289,29 +289,44 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // MOBILE ORIENTATION GIROSCOPE
-document.getElementById('accept-instructions').addEventListener('click', () => {
-    if (
-        typeof DeviceMotionEvent !== 'undefined' &&
-        typeof DeviceMotionEvent.requestPermission === 'function'
-      ) {
-        DeviceMotionEvent.requestPermission()
-          .then(response => {
-            if (response === 'granted') {
-              viewer.enableControl(PANOLENS.CONTROLS.DEVICEORIENTATION);
-              viewer.setPitch(viewer.getPitch());
-              alert('Control por movimiento habilitado.');
-            } else {
-              alert('Permiso denegado para acceder al giroscopio.');
+    document.getElementById('accept-instructions').addEventListener('click', async () => {
+        // Verifica si la orientación está soportada
+        if (!viewer.isOrientationSupported()) {
+            alert('El control por movimiento no está soportado en este dispositivo.');
+            return;
+        }
+
+        // Para iOS: solicitar permiso si es necesario
+        if (
+            typeof DeviceMotionEvent !== 'undefined' &&
+            typeof DeviceMotionEvent.requestPermission === 'function'
+        ) {
+            try {
+                const response = await DeviceMotionEvent.requestPermission();
+                if (response !== 'granted') {
+                    alert('Permiso denegado para usar el giroscopio.');
+                    return;
+                }
+            } catch (error) {
+                alert('Error solicitando permiso para giroscopio.');
+                console.error(error);
+                return;
             }
-          })
-          .catch(console.error);
-      } else {
-        // Android o navegadores que no requieren permiso
-        viewer.enableControl(PANOLENS.CONTROLS.DEVICEORIENTATION);
-        viewer.setPitch(viewer.getPitch());
-        alert('Control por movimiento habilitado.');
-      }
-});
+        }
+
+        // Activar control por orientación
+        viewer.startOrientation();
+
+        // Verificar si está activo
+        if (viewer.isOrientationActive()) {
+            // Forzar refresco (a veces necesario para que funcione)
+            viewer.setPitch(viewer.getPitch());
+
+            alert('Control por movimiento activado.');
+        } else {
+            alert('No se pudo activar el control por movimiento.');
+        }
+    });
 
 });
 
