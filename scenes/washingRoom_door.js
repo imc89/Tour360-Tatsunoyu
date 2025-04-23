@@ -1,8 +1,16 @@
 export default function washing_door(hotspot) {
+
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
+    const panoramaPath = isMobile
+        ? "mobile_img/2B.jpg"  //  mobile
+        : "low_img/2B.jpg";    //  desktop
+
+
     return {
         title: "HABITACIÓN LAVADO - PUERTA ",
         type: "equirectangular",
-        panorama: "low_img/2B.jpg",
+        panorama: panoramaPath,
         hotSpots: [
             {
                 pitch: -13,

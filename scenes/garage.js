@@ -1,8 +1,15 @@
 export default function garage(hotspot) {
+
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
+    const panoramaPath = isMobile
+        ? "mobile_img/2A.jpg"  //  mobile
+        : "low_img/2A.jpg";    //  desktop
+
     return {
        "title": "GARAJE",
         "type": "equirectangular",
-        "panorama": "low_img/2A.jpg",
+        "panorama": panoramaPath,
         "hotSpots": [
             {
                 "pitch": -15,

@@ -1,38 +1,37 @@
-export default function washing_inside_1(hotspot) {
+export default function male_bath_3(hotspot) {
 
     const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
     const panoramaPath = isMobile
-        ? "mobile_img/3B.jpg"  //  mobile
-        : "low_img/3B.jpg";    //  desktop
+        ? "mobile_img/male/3.jpg"  //  mobile
+        : "low_img/male/3.jpg";    //  desktop
 
     return {
-        title: "HABITACIÓN LAVADO - INTERIOR",
+        title: "BAÑO MASCULINO - 3",
         type: "equirectangular",
         panorama: panoramaPath,
         hotSpots: [
-            {
-                pitch: -21,
-                yaw: -176,
+             {
+                pitch: -22,
+                yaw: -178,
                 type: "scene",
-                sceneId: "washing_door",
+                sceneId: "male_bath_2",
                 createTooltipFunc: hotspot
             },
             {
                 pitch: -24,
                 yaw: -1,
                 type: "scene",
-                sceneId: "washing_inside_2",
+                sceneId: "male_bath_4",
                 createTooltipFunc: hotspot
             },
             {
-                pitch: -31,
-                yaw: -90,
+                pitch: -9,
+                yaw: 90.5,
                 type: "scene",
-                sceneId: "washing_inside_4",
+                sceneId: "male_bath_6",
                 createTooltipFunc: hotspot
             }
-
         ]
     };
 }

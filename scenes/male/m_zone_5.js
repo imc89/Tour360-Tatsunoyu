@@ -1,22 +1,21 @@
-export default function initial(hotspot) {
+export default function male_bath_5(hotspot) {
 
     const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
     const panoramaPath = isMobile
-        ? "mobile_img/1A.jpg"  //  mobile
-        : "low_img/1A.jpg";    //  desktop
+        ? "mobile_img/male/5.jpg"  //  mobile
+        : "low_img/male/5.jpg";    //  desktop
 
     return {
-        title: "ENTRADA",
+        title: "BAÑO MASCULINO - 5",
         type: "equirectangular",
         panorama: panoramaPath,
-        yaw: -3,
         hotSpots: [
-            {
-                pitch: -13,
-                yaw: -3.072718226210974,
+             {
+                pitch: -17,
+                yaw: 180,
                 type: "scene",
-                sceneId: "garage",
+                sceneId: "male_bath_4",
                 createTooltipFunc: hotspot
             }
         ]

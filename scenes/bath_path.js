@@ -1,8 +1,15 @@
 export default function bath_path(hotspot) {
+
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
+    const panoramaPath = isMobile
+        ? "mobile_img/3A.jpg"  //  mobile
+        : "low_img/3A.jpg";    //  desktop
+
     return {
         title: "BAÑO - CAMINO",
         type: "equirectangular",
-        panorama: "low_img/3A.jpg",
+        panorama: panoramaPath,
         hotSpots: [
             {
                 pitch: -13,

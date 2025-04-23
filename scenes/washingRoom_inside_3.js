@@ -1,8 +1,15 @@
 export default function washing_inside_3(hotspot) {
+
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
+    const panoramaPath = isMobile
+        ? "mobile_img/5B.jpg"  //  mobile
+        : "low_img/5B.jpg";    //  desktop
+
     return {
         title: "HABITACIÓN LAVADO - INTERIOR",
         type: "equirectangular",
-        panorama: "low_img/5B.jpg",
+        panorama: panoramaPath,
         hotSpots: [
             {
                 pitch: -31,

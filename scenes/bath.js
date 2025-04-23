@@ -1,8 +1,15 @@
 export default function bath(hotspot) {
+
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
+    const panoramaPath = isMobile
+        ? "mobile_img/1C.jpg"  //  mobile
+        : "low_img/1C.jpg";    //  desktop
+
     return {
         title: "TATSUNOYU BATH - INTERIOR",
         type: "equirectangular",
-        panorama: "low_img/1C.jpg",
+        panorama: panoramaPath,
         hotSpots: [
             {
                 pitch: -11,

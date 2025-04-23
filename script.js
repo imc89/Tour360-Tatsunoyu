@@ -13,6 +13,10 @@ import washing_inside_4 from './scenes/washingRoom_inside_4.js';
 
 import male_bath_1 from './scenes/male/m_zone_1.js';
 import male_bath_2 from './scenes/male/m_zone_2.js';
+import male_bath_3 from './scenes/male/m_zone_3.js';
+import male_bath_4 from './scenes/male/m_zone_4.js';
+import male_bath_5 from './scenes/male/m_zone_5.js';
+import male_bath_6 from './scenes/male/m_zone_6.js';
 
 document.addEventListener('DOMContentLoaded', function () {
     // ========== DECLARACIÓN DE VARIABLES ==========
@@ -52,6 +56,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         'male_bath_1': { x: '46%', y: '43%' },
         'male_bath_2': { x: '46%', y: '47%' },
+        'male_bath_3': { x: '46%', y: '47%' },
+        'male_bath_4': { x: '46%', y: '47%' },
+        'male_bath_5': { x: '46%', y: '47%' },
+        'male_bath_6': { x: '46%', y: '47%' },
 
     };
 
@@ -69,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // velocidad
             "yawSpeed": 6.0, // Velocidad horizontal (por defecto es 1)
             "pitchSpeed": 6.0, // Velocidad vertical
-            "friction": 0, // Sensibilidad al arrastre (menos = más rápido)
+            "friction": 0.25, // Sensibilidad al arrastre (menos = más rápido)
             //mobile
             "showControls": false,  // Puedes deshabilitar los controles si prefieres que sea solo con el giroscopio
             "deviceOrientation": true  // Habilita el control por movimiento
@@ -89,7 +97,12 @@ document.addEventListener('DOMContentLoaded', function () {
             washing_inside_4: washing_inside_4(hotspot),
 
             male_bath_1: male_bath_1(hotspot),
-            male_bath_2: male_bath_2(hotspot)
+            male_bath_2: male_bath_2(hotspot),
+            male_bath_3: male_bath_3(hotspot),
+            male_bath_4: male_bath_4(hotspot),
+            male_bath_5: male_bath_5(hotspot),
+            male_bath_6: male_bath_6(hotspot)
+
         }
     });
 
@@ -188,7 +201,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // MOBILE ORIENTATION GIROSCOPE
         document.getElementById('accept-instructions').addEventListener('click', async () => {
             if (!viewer.isOrientationSupported()) {
-                alert('Tu dispositivo no soporta orientación.');
                 return;
             }
 
@@ -279,9 +291,12 @@ document.addEventListener('DOMContentLoaded', function () {
             "washing_inside_3": { pitch: -2, yaw: targetYaw <= 0 ? 2 : undefined },
             "washing_inside_4": { pitch: -7, yaw: targetYaw <= 0 ? 1 : undefined },
 
-            "male_bath_1": { pitch: -1, yaw: targetYaw <= -2 ? -89 : undefined }
-
-
+            "male_bath_1": { pitch: -1, yaw: targetYaw <= -2 ? -89 : undefined },
+            "male_bath_2": { pitch: -1, yaw: targetYaw <= -2 ? -89 : undefined },
+            "male_bath_3": { pitch: -1, yaw: targetYaw <= -2 ? -89 : undefined },
+            "male_bath_4": { pitch: -1, yaw: targetYaw <= -2 ? -89 : undefined },
+            "male_bath_5": { pitch: -1, yaw: targetYaw <= -2 ? -89 : undefined },
+            "male_bath_6": { pitch: 0, yaw: targetYaw <= -2 ? -1.5 : undefined },
         };
 
         if (pitchSettings[currentSceneId]) {
